@@ -15,17 +15,22 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile.dev
-          push: false
-          load: true
-          tags: localhost/postiz:latest
+          push: true
+          tags: ${{ github.repository_owner }}/postiz:latest
 
       - name: Save Docker image
-        run: docker save -o postiz-image.tar localhost/postiz:latest
+        run: docker save -o postiz-image.tar ${{ github.repository_owner }}/postiz:latest
 
       - name: Upload Docker image as artifact
         uses: actions/upload-artifact@v4
