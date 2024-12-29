@@ -24,7 +24,7 @@ export const PublicComponent = () => {
     <div className="flex flex-col">
       <h2 className="text-[24px]">Public API</h2>
       <div className="text-customColor18 mt-[4px]">
-        Use Postiz API to integrate with your tools.
+        Use Social Looksty API to integrate with your tools.
         <br />
         <a
           className="underline hover:text-white"
