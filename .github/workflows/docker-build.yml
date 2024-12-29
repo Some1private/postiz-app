@@ -21,6 +21,7 @@ jobs:
           context: .
           file: Dockerfile.dev
           push: false
+          load: true
           tags: localhost/postiz:latest
 
       - name: Save Docker image
