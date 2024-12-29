@@ -23,19 +23,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
-        if: ${{ github.repository_owner == 'some1private' }}
         uses: docker/build-push-action@v5
         with:
           context: .
           file: Dockerfile.dev
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/postiz-app:latest
-          
-      - name: Build and push Docker image with lowercase owner
-        if: ${{ github.repository_owner != 'some1private' }}
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: Dockerfile.dev
-          push: true
-          tags: ghcr.io/some1private/postiz-app:latest
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:${{ github.sha }}
+            ghcr.io/${{ github.repository_owner }}/${{ github.repository }}:latest
