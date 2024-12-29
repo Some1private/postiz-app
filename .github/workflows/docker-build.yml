@@ -27,13 +27,4 @@ jobs:
           context: .
           file: Dockerfile.dev
           push: true
-          tags: ${{ github.repository_owner }}/postiz:latest
-
-      - name: Save Docker image
-        run: docker save -o postiz-image.tar ${{ github.repository_owner }}/postiz:latest
-
-      - name: Upload Docker image as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: postiz-image
-          path: postiz-image.tar
+          tags: quickbeast0/postiz:latest
