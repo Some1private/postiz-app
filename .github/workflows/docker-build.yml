@@ -28,3 +28,5 @@ jobs:
           file: Dockerfile.dev
           push: true
           tags: quickbeast0/postiz:latest
+          no-cache: true
+          pull: true
